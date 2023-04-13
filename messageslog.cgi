@@ -30,13 +30,14 @@ menu = open("menu.html", "r")
 for line in menu:
     print(line)
 
-    log_dir = '/var/log/messages/'
-    for log_file in os.listdir(log_dir):
-        if log_file.endswith('.log'):
-            log_path = os.path.join(log_dir, log_file)
-            log = subprocess.check_output(['tail', '-n', '1000', log_path])
-            for line in reversed(log.decode().split('\n')):
-                print(line.strip())
+# Define log_dir and print logs
+log_dir = '/var/log/messages/'
+for log_file in os.listdir(log_dir):
+    if log_file.endswith('.log'):
+        log_path = os.path.join(log_dir, log_file)
+        log = subprocess.check_output(['tail', '-n', '1000', log_path])
+        for line in reversed(log.decode().split('\n')):
+            print(line.strip())
 
 print("""
   </body>
