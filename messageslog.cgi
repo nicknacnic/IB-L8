@@ -29,9 +29,12 @@ for line in menu:
     print(line)
 
 print('<div class="response"><pre>')
-log = open("/var/log/messages", "r").readlines()
-for line in reversed(log):
-    print(line.strip())
+p = subprocess.Popen(['tail', '-F', '/var/log/*'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+while True:
+    line = p.stdout.readline().decode('utf-8').strip()
+    if not line:
+        break
+    print(line)
 print("</pre></div>")
 
 print("""
