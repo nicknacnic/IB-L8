@@ -1,23 +1,47 @@
 <html>
-    <head>
-        <title>Messages</title>
-        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/style.css" type="text/css">
-        <style>
-          body {
-            font-family: 'Lato', sans-serif;
-          }
-        </style>
-      </head>
-<body bgcolor="#e8ebeb">
-<center>
-<a href="/cgi-bin/"><img src="logo.svg"></a>
-<div style="background-color: #D9E1E2; border: 3px solid #FEDD00; padding: 5px; margin-top: 10px;">
-  Unauthorized use prohibited.
-</div>
-</center>
-<footer>
-  &copy; 2023 by Infoblox, Inc.
-</footer>
-</body>
+  <head>
+    <title>Messages</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css" type="text/css">
+    <style>
+      body {
+        font-family: 'Lato', sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+      #container {
+        min-height: 100%;
+        position: relative;
+      }
+      #content {
+        padding-bottom: 40px; /* Height of the footer */
+      }
+      footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #D9E1E2;
+        border: 3px solid #FEDD00;
+        padding: 5px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body bgcolor="#e8ebeb">
+    <div id="container">
+      <center>
+        <a href="/cgi-bin/"><img src="logo.svg"></a>
+        <div style="background-color: #D9E1E2; border: 3px solid #FEDD00; padding: 5px; margin-top: 10px;">
+          Unauthorized use prohibited.
+        </div>
+      </center>
+      <div id="content">
+        <!-- page content goes here -->
+      </div>
+      <footer>
+        &copy; 2023 by Infoblox, Inc.
+      </footer>
+    </div>
+  </body>
 </html>
