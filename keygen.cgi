@@ -1,7 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import cgi
-import cgitb; cgitb.enable(format='text')  # for troubleshooting
+import cgitb
+cgitb.enable(format='text')  # for troubleshooting
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -9,10 +10,10 @@ import xml.etree.ElementTree as ET
 
 fwcredsfile = "/var/ibl8/fw_creds.py"
 
-print "Content-type: text/html"
-print
+print("Content-type: text/html")
+print()
 
-print """
+print("""
 <html>
 <head>
   <title>Generate Key</title>
@@ -27,12 +28,12 @@ print """
     Generate Key
   </div>
 </div>
-"""
+""")
 
-#Print the menu
+# Print the menu
 menu = open("menu.html", "r")
 for line in menu:
-  print line
+    print(line)
 
 form = cgi.FieldStorage()
 fwip = form.getvalue("fwip")
@@ -40,29 +41,29 @@ fwusername = form.getvalue("fwusername")
 fwpassword = form.getvalue("fwpassword")
 
 if (fwip and fwusername and fwpassword):
-  values = {'type': 'keygen', 'user': fwusername, 'password': fwpassword}
-  apicall = 'https://%s/api/' % (fwip, )
-  response = requests.post(apicall, data=values, verify=False)
-  if response:
-    tree = ET.fromstring(response.text)
-    if tree.get('status') == "success":
-      fwkey = tree.find('./result/key').text
-  if fwkey:
-    file = open(fwcredsfile, "w")
-    line = 'fwhost = "%s"\n' % (fwip, )
-    file.write(line)
-    line = 'fwkey = "%s"\n' % (fwkey, )
-    file.write(line)
-    file.close()
+    values = {'type': 'keygen', 'user': fwusername, 'password': fwpassword}
+    apicall = 'https://%s/api/' % (fwip, )
+    response = requests.post(apicall, data=values, verify=False)
+    if response:
+        tree = ET.fromstring(response.text)
+        if tree.get('status') == "success":
+            fwkey = tree.find('./result/key').text
+        if fwkey:
+            file = open(fwcredsfile, "w")
+            line = 'fwhost = "%s"\n' % (fwip, )
+            file.write(line)
+            line = 'fwkey = "%s"\n' % (fwkey, )
+            file.write(line)
+            file.close()
 
-    print '<div class="response">'
-    print "IP: %s<br>\n" % (fwip, )
-    print "Key: %s<br>\n" % (fwkey, )
-    print "<br>\n"
-    print "Successfully written to the credential store."
+            print('<div class="response">')
+            print("IP: %s<br>\n" % (fwip, ))
+            print("Key: %s<br>\n" % (fwkey, ))
+            print("<br>\n")
+            print("Successfully written to the credential store.")
 
 else:
-  print """
+    print("""
 <div class="form1">
   <form method="post" action="/cgi-bin/keygen.cgi">
     <label>Firewall IP Address or Hostname</label><br>
@@ -76,4 +77,4 @@ else:
 </div>
 </body>
 </html>
-  """
+  """)
