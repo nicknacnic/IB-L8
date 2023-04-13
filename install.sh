@@ -3,7 +3,6 @@
 # Tell the installer the root of the files to download
 REPO="https://raw.githubusercontent.com/nicknacnic/IB-L8/master/"
 
-:<<'COMMENT'
 # Install the latest version of Python if it's not already installed
 if ! command -v python3 &>/dev/null; then
     sudo apt update && sudo apt install -y python3
@@ -27,7 +26,7 @@ sudo chmod 777 create.sql
 sudo echo 'CREATE TABLE DevicesDynamic (DeviceName "TEXT", DeviceMac "TEXT", Groups "Text");' > create.sql
 sudo sqlite3 devices.sql < create.sql
 sudo rm create.sql
-COMMENT
+
 
 # Install the code that updates the firewall
 sudo wget -q ${REPO}ibl8.py
