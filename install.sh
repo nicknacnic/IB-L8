@@ -1,8 +1,9 @@
 #!/bin/bash
+
 # Tell the installer the root of the files to download
 REPO="https://raw.githubusercontent.com/nicknacnic/IB-L8/master/"
-:<<'COMMENT'
 
+:<<'COMMENT'
 # Install the latest version of Python if it's not already installed
 if ! command -v python3 &>/dev/null; then
     sudo apt update && sudo apt install -y python3
@@ -39,16 +40,16 @@ sudo find /var/ibl8 -exec chown www-data {} \;
 sudo find /var/ibl8 -exec chgrp www-data {} \;
 sudo find /var/ibl8 -type f -exec chmod 755 {} \;
 
-#update cron to execute the script every minute
+# Update cron to execute the script every minute
 cd /etc/cron.d
 sudo wget -q ${REPO}ibl8cron
 
-#install apache2 and configure it to allow cgi
+# Install apache2 and configure it to allow cgi
 sudo apt install apache2 -y
 sudo a2enmod cgid
 sudo service apache2 restart
 
-#copy cgi scripts into the cgi directory
+# Copy cgi scripts into the cgi directory
 cd /usr/lib/cgi-bin
 sudo wget -q ${REPO}index.cgi
 sudo wget -q ${REPO}keygen.cgi
@@ -73,7 +74,8 @@ sudo find /usr/lib/cgi-bin -exec chown www-data {} \;
 sudo find /usr/lib/cgi-bin -exec chgrp www-data {} \;
 sudo find /usr/lib/cgi-bin -type f -exec chmod 755 {} \;
 
-#log permissions and rotation configuration
+
+# Log permissions and rotation configuration
 sudo chmod 644 /var/log/syslog
 sudo chmod 644 /var/log/messages
 cd /etc
@@ -98,7 +100,7 @@ sudo chown root apache2
 sudo chgrp root apache2
 sudo chmod 644 apache2
 
-#copy default web pages
+# Copy default web pages
 cd /var/www/html
 sudo rm index.html
 sudo wget -q ${REPO}index.html
@@ -121,13 +123,13 @@ sudo find /var/autoback -exec chown www-data {} \;
 sudo find /var/autoback -exec chgrp www-data {} \;
 sudo find /var/autoback -type f -exec chmod 755 {} \;
 
-#harden the Raspberry Pi
+# Harden the Raspberry Pi
 sudo systemctl disable avahi-daemon
 sudo systemctl stop avahi-daemon
 sudo systemctl disable triggerhappy
 sudo systemctl stop triggerhappy
 
-#harden Apache
+# Harden Apache
 cd /etc/apache2/conf-available
 sudo rm -y security.conf
 sudo wget -q ${REPO}security.conf
