@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import cgi
 import cgitb; cgitb.enable(format='text')  # for troubleshooting
 
@@ -30,9 +31,15 @@ for line in menu:
   print(line)
 
 print('<div class="response"><pre>')
-log = open("/var/log/syslog", "r").readlines()
-for line in reversed(log):
-  print(line.strip())
+
+# Recursively read all files in subdirectories of /var/log/syslog
+for dirpath, dirnames, filenames in os.walk('/var/log/syslog'):
+    for filename in filenames:
+        path = os.path.join(dirpath, filename)
+        with open(path, 'r') as f:
+            for line in reversed(f.readlines()):
+                print(line.strip())
+
 print("</pre></div>")
 
 print("""
