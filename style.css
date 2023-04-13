@@ -97,6 +97,17 @@ li a:hover {
     cursor: pointer;
 }
 
+.form1 input[type=revert] {
+  font:normal 14px "Lato", lato, Lato, stark, sans-serif;
+  background-color: #FF585D;
+  border: none;
+  color: white;
+  width: 100%;
+  padding: 15px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .form2 {
   position: absolute;
   width: 80%;
