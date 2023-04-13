@@ -12,7 +12,9 @@ fi
 sudo apt install -y sqlite3 python3-pip
 pip3 install xmldiff
 pip3 install requests
-pip3 install pypdf2
+#pip3 install pypdf2
+pip3 install bloxone
+pip3 install infoblox-client
 sudo apt install fonts-lato
 
 # Create the directory for the primary IB-L8 code to live
