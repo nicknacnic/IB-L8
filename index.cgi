@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import cgi
 import cgitb; cgitb.enable(format='text')  # for troubleshooting
@@ -6,10 +6,10 @@ import sqlite3
 
 dbfile = "/var/ibl8/devices.sql"
 
-print "Content-type: text/html"
-print
+print("Content-type: text/html")
+print()
 
-print """
+print("""
 <html>
 <head>
   <title>Manage Dynamic Devices</title>
@@ -26,12 +26,12 @@ print """
     Dynamic User System
   </div>
 </div>
-"""
+""")
 
 #Print the menu
 menu = open("menu.html", "r")
 for line in menu:
-  print line
+  print(line)
 
 form = cgi.FieldStorage()
 devicename = form.getvalue("devicename")
@@ -40,13 +40,13 @@ devicetag = form.getvalue("devicetag")
 devicedelete = form.getvalue("devicedelete")
 
 if (devicedelete):
-  print devicedelete
+  print(devicedelete)
   conn = sqlite3.connect(dbfile)
   cursor = conn.cursor()
   try:
     cursor.execute('DELETE FROM DevicesDynamic WHERE DeviceName = ?', (devicedelete, ))
   except sqlite3.Error as e:
-    print e.args[0]
+    print(e.args[0])
   conn.commit()
   conn.close()
 
@@ -58,7 +58,7 @@ if (devicename and devicemac):
   conn.commit()
   conn.close()
 
-print """
+print("""
 <div class="form1">
   <form method="post" action="/cgi-bin/index.cgi">
     <label>Name</label><br>
@@ -70,14 +70,14 @@ print """
     <input type="submit" value="Submit"/>
   </form>
 </div>
-"""
+""")
 
 conn = sqlite3.connect(dbfile)
 cursor = conn.cursor()
 cursor.execute('select DeviceName, DeviceMac, Groups from DevicesDynamic order by Groups')
 rows = cursor.fetchall()
 
-print """
+print("""
 <div class="form2">
   <form method="post" action="/cgi-bin/index.cgi">
     <table>
@@ -91,21 +91,21 @@ print """
         <th>MAC Address</th>
         <th>Group</th>
       </tr>
-"""
+""")
 
 for row in rows:
-  print '      <tr><td align="center"><input type="radio" name="devicedelete" value="%s"/></td>' % (row[0], )
+  print('      <tr><td align="center"><input type="radio" name="devicedelete" value="%s"/></td>' % (row[0], ))
   for field in row:
-    print "       <td>%s</td>" % (field, )
-  print "      </tr>"
+    print("       <td>%s</td>" % (field, ))
+  print("      </tr>")
 
 conn.close()
 
-print """
+print("""
     </table>
     <input type="submit" value="Submit">
   </form>
 </div>
 </body>
 </html>
-"""
+""")
