@@ -35,13 +35,12 @@ print("""
 """)
 
 print("""
-  <div class="form1">
+  <div class="form4">
     <form method="post" action="/cgi-bin/keygen.cgi">
-      <input type="export" value="Export to PDF"/>
+      <input type="submit" value="Export to PDF"/>
     </form>
   </div>
   </body>
-  </html>
     """)
   
 
