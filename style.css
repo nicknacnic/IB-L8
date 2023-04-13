@@ -18,7 +18,7 @@
     position: absolute;
     top: 40px;
     left: 43%;
-    font:normal 30px "Lato", lato, syabil, stark, sans-serif;
+    font:normal 30px "Lato", lato, Lato, stark, sans-serif;
 }
 
 ul {
@@ -31,7 +31,7 @@ ul {
     width: 150px;
     height: 100%;
     background-color: #F0EFE9;
-    font:normal 18px "Lato", lato, syabil, stark, sans-serif;
+    font:normal 18px "Lato", lato, Lato, stark, sans-serif;
     padding: 16px 8px;
 }
 
@@ -40,7 +40,7 @@ li a {
     color: #000;
     padding: 4px 16px;
     text-decoration: none;
-    font:normal 14px "Lato", lato, syabil, stark, sans-serif;
+    font:normal 14px "Lato", lato, Lato, stark, sans-serif;
 }
 
 li a:hover {
@@ -59,7 +59,7 @@ li a:hover {
 }
 
 .form1 label {
-    font:normal 16px "Lato", lato, syabil, stark, sans-serif;
+    font:normal 16px "Lato", lato, Lato, stark, sans-serif;
 }
 
 .form1 input[type=text] {
@@ -67,7 +67,7 @@ li a:hover {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    font:normal 14px "Lato", lato, syabil, stark, sans-serif;
+    font:normal 14px "Lato", lato, Lato, stark, sans-serif;
 }
 
 .form1 select {
@@ -75,7 +75,7 @@ li a:hover {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    font:normal 14px "Lato", lato, syabil, stark, sans-serif;
+    font:normal 14px "Lato", lato, Lato, stark, sans-serif;
 }
 
 .form1 input[type=password] {
@@ -83,11 +83,11 @@ li a:hover {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    font:normal 14px "Lato", lato, syabil, stark, sans-serif;
+    font:normal 14px "Lato", lato, Lato, stark, sans-serif;
 }
 
 .form1 input[type=submit] {
-    font:normal 14px "Lato", lato, syabil, stark, sans-serif;
+    font:normal 14px "Lato", lato, Lato, stark, sans-serif;
     background-color: #00BD4D;
     border: none;
     color: white;
@@ -122,7 +122,7 @@ li a:hover {
   color: white;
   border: 5px solid #F0EFE9;
   border-radius: 5px;
-  font:normal 16px "Lato", lato, syabil, stark, sans-serif;
+  font:normal 16px "Lato", lato, Lato, stark, sans-serif;
 }
 
 .form2 tr {
@@ -133,7 +133,7 @@ li a:hover {
   padding: 5px;
   border: 5px solid #F0EFE9;
   border-radius: 5px;
-  font:normal 14px "Lato", lato, syabil, stark, sans-serif;
+  font:normal 14px "Lato", lato, Lato, stark, sans-serif;
 }
 
 .form2 .datacolumn {
@@ -147,7 +147,7 @@ li a:hover {
 }
 
 .form2 input[type=submit] {
-    font:normal 14px "Lato", lato, syabil, stark, sans-serif;
+    font:normal 14px "Lato", lato, Lato, stark, sans-serif;
     background-color: #00BD4D;
     border: none;
     color: white;
@@ -161,6 +161,6 @@ li a:hover {
     position: absolute;
     top: 125px;
     left: 175px;
-    font:normal 14px "Lato", lato, syabil, stark, sans-serif;
+    font:normal 14px "Lato", lato, Lato, stark, sans-serif;
 }
 
