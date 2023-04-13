@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import cgi
 import cgitb; cgitb.enable(format='text')  # for troubleshooting
@@ -13,10 +13,10 @@ fwhost = fw_creds.fwhost
 fwkey = fw_creds.fwkey
 
 
-print "Content-type: text/html"
-print
+print("Content-type: text/html")
+print()
 
-print """
+print("""
 <html>
 <head>
   <title>DHCP Leases</title>
@@ -32,49 +32,49 @@ print """
     DHCP Leases
   </div>
 </div>
-"""
+""")
 
 #Print the menu
 menu = open("menu.html", "r")
 for line in menu:
-  print line
+  print(line)
 
-print '<div class="response">'
+print('<div class="response">')
 
 values = {'type': 'op', 'cmd': '<show><dhcp><server><lease><interface>all</interface></lease></server></dhcp></show>', 'key': fwkey}
 palocall = 'https://%s/api/' % (fwhost)
 r = requests.post(palocall, data=values, verify=False)
 
 dhcptree = ET.fromstring(r.text)
-print "<table cellpadding=5 cellspacing=0 border=1>"
-print "<tr><td>IP</td><td>MAC</td><td>Hostname</td><td>State</td><td>Duration</td><td>Lease Time</td></tr>"
+print("<table cellpadding=5 cellspacing=0 border=1>")
+print("<tr><td>IP</td><td>MAC</td><td>Hostname</td><td>State</td><td>Duration</td><td>Lease Time</td></tr>")
 for lease in dhcptree.findall('./result/interface/entry'):
-  print "<tr>"
-  print "<td>%s</td>" % (lease.find('ip').text, )
-  print "<td>%s</td>" % (lease.find('mac').text, )
+  print("<tr>")
+  print("<td>%s</td>" % (lease.find('ip').text, ))
+  print("<td>%s</td>" % (lease.find('mac').text, ))
   if lease.find('hostname') is not None:
-    print "<td>%s</td>" % (lease.find('hostname').text, )
+    print("<td>%s</td>" % (lease.find('hostname').text, ))
   else:
-    print "<td></td>"
+    print("<td></td>")
   if lease.find('state') is not None:
-    print "<td>%s</td>" % (lease.find('state').text, )
+    print("<td>%s</td>" % (lease.find('state').text, ))
   else:
-    print "<td></td>"
+    print("<td></td>")
   if lease.find('duration') is not None:
-    print "<td>%s</td>" % (lease.find('duration').text, )
+    print("<td>%s</td>" % (lease.find('duration').text, ))
   else:
-    print "<td></td>"
+    print("<td></td>")
   if lease.find('leasetime') is not None:
-    print "<td>%s</td>" % (lease.find('leasetime').text, )
+    print("<td>%s</td>" % (lease.find('leasetime').text, ))
   else:
-    print "<td></td>"
-  print "</tr>"
-print "</table>"
+    print("<td></td>")
+  print("</tr>")
+print("</table>")
 
-print "</div>"
+print("</div>")
 
 
-print """
+print("""
   </body>
   </html>
-"""
+""")
