@@ -2,6 +2,7 @@
 
 import cgi
 import subprocess
+import os
 import cgitb; cgitb.enable(format='text')  # for troubleshooting
 
 print("Content-type: text/html")
