@@ -12,6 +12,7 @@ fi
 sudo apt install -y sqlite3 python3-pip
 pip3 install xmldiff
 pip3 install requests
+pip3 install subprocess
 sudo apt install fonts-lato
 
 # Create the directory for the primary IB-L8 code to live
