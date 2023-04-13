@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 import datetime
 
 import sys
-sys.path.insert(0, '/var/dug/')
+sys.path.insert(0, '/var/ibl8/')
 
 import fw_creds
 fwhost = fw_creds.fwhost

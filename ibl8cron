@@ -1,4 +1,4 @@
-* * * * * www-data /var/dug/dug.py
+* * * * * www-data /var/ibl8/ibl8.py
 0 * * * * www-data /var/autoback/autoback.py
 5 * * * * www-data /var/autoback/autoback.py
 10 * * * * www-data /var/autoback/autoback.py
@@ -11,4 +11,4 @@
 45 * * * * www-data /var/autoback/autoback.py
 50 * * * * www-data /var/autoback/autoback.py
 55 * * * * www-data /var/autoback/autoback.py
-0 0 * * * www-data cp /var/dug/devices.sql /var/dug/devices.backup
+0 0 * * * www-data cp /var/ibl8/devices.sql /var/ibl8/devices.backup

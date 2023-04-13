@@ -7,7 +7,7 @@ import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 import xml.etree.ElementTree as ET
-sys.path.insert(0, '/var/dug/')
+sys.path.insert(0, '/var/ibl8/')
 import fw_creds
 fwhost = fw_creds.fwhost
 fwkey = fw_creds.fwkey

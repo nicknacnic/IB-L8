@@ -10,7 +10,7 @@ import datetime
 
 fwhost = fw_creds.fwhost
 fwkey = fw_creds.fwkey
-dbfile = "/var/dug/devices.sql"
+dbfile = "/var/ibl8/devices.sql"
 rsafile = "/var/www/html/rsa.csv"
 macfile = "/var/www/html/macs.txt"
 
@@ -161,7 +161,7 @@ leases = getDhcp(fwhost, fwkey)
 #Add statically-assigned IP address data from the ARP table
 arps = enrichArp(leases)
 
-#Enrich the entries with data from the DUG database
+#Enrich the entries with data from the ibl8 database
 hostdata = enrichDatabase(arps)
 
 #Write out the csv data for RSA ingestion
@@ -176,6 +176,6 @@ fwxml = fwFormat(hostdata)
 #Write the data to the firewall
 stat = fwWrite(fwxml)
 
-log = open("/var/dug/dug.log", "a")
+log = open("/var/ibl8/ibl8.log", "a")
 log.write(str(datetime.datetime.now()) + ": " + stat + "\n")
 log.close
