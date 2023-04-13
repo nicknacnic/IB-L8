@@ -1,14 +1,20 @@
 #!/bin/bash
 
-# Stop the autoback service
-sudo systemctl stop autoback.service
-sudo systemctl disable autoback.service
+# Stop the autoback service if it exists
+if systemctl list-units | grep -q "autoback.service"; then
+  sudo systemctl stop autoback.service
+  sudo systemctl disable autoback.service
+fi
 
 # Remove the autoback directory and its contents
 sudo rm -rf /var/autoback
 
 # Remove the ibl8 directory and its contents
 sudo rm -rf /var/ibl8
+
+# Remove the contents of /var/www/html and /usr/lib/cgi-bin
+sudo rm -rf /var/www/html/*
+sudo rm -rf /usr/lib/cgi-bin/*
 
 # Remove the apache2 web server and its dependencies
 sudo apt purge apache2 -y
@@ -21,8 +27,8 @@ sudo rm -f /etc/cron.d/ibl8cron
 sudo rm -f /var/log/apache2/access.log
 sudo rm -f /var/log/apache2/error.log
 sudo rm -rf /var/log/apache2
-sudo rm -f /var/log/syslog
-sudo rm -f /var/log/messages
+sudo rm -rf /var/log/syslog/*
+sudo rm -r /var/log/messages/*
 sudo rm -f /etc/rsyslog.conf
 sudo rm -f /etc/logrotate.d/apache2
 sudo rm -f /etc/logrotate.conf
