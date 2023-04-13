@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 
 import cgi
-import cgitb ; cgitb.enable(format='text')  # for troubleshooting
+import cgitb; cgitb.enable(format='text')  # for troubleshooting
 import sys
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 import xml.etree.ElementTree as ET
+sys.path.insert(0, '/var/ibl8/')
 import fw_creds
 fwhost = fw_creds.fwhost
 fwkey = fw_creds.fwkey
+
 
 print("Content-type: text/html")
 print()
@@ -17,7 +19,7 @@ print()
 print("""
 <html>
 <head>
-  <title>ARP Entries</title>
+  <title>DHCP Leases</title>
   <link rel="stylesheet" href="/style.css" type="text/css">
 </head>
 <body>
@@ -27,10 +29,21 @@ print("""
     <img src="/logo.svg" height="75px">
   </div>
   <div class="text">
-    ARP Entries
+    DHCP Leases
   </div>
 </div>
 """)
+
+print("""
+  <div class="form1">
+    <form method="post" action="/cgi-bin/keygen.cgi">
+      <input type="export" value="Export to PDF"/>
+    </form>
+  </div>
+  </body>
+  </html>
+    """)
+  
 
 #Print the menu
 menu = open("menu.html", "r")
@@ -39,26 +52,38 @@ for line in menu:
 
 print('<div class="response">')
 
-values = {'type': 'op', 'cmd': '<show><arp><entry name ="all"/></arp></show>', 'key': fwkey}
+values = {'type': 'op', 'cmd': '<show><dhcp><server><lease><interface>all</interface></lease></server></dhcp></show>', 'key': fwkey}
 palocall = 'https://%s/api/' % (fwhost)
 r = requests.post(palocall, data=values, verify=False)
-arptree = ET.fromstring(r.text)
-if (arptree.get('status') == "success"):
-  for entries in arptree.findall('./result/entries'):
-    print('<table cellpadding=5 cellspacing=0 border=1>')
-    print('<tr><td>IP</td><td>MAC</td><td>Status</td><td>TTL</td><td>Interface</td><td>Port</td></tr>')
-    for entry in entries.findall('entry'):
-      print("<tr>")
-      print("<td>%s</td>" % (entry.find('ip').text, ))
-      print("<td>%s</td>" % (entry.find('mac').text, ))
-      print("<td>%s</td>" % (entry.find('status').text, ))
-      print("<td>%s</td>" % (entry.find('ttl').text, ))
-      print("<td>%s</td>" % (entry.find('interface').text, ))
-      print("<td>%s</td>" % (entry.find('port').text, ))
-      print("</tr>")
-    print("</table>")
+
+dhcptree = ET.fromstring(r.text)
+print("<table cellpadding=5 cellspacing=0 border=1>")
+print("<tr><td>IP</td><td>MAC</td><td>Hostname</td><td>State</td><td>Duration</td><td>Lease Time</td></tr>")
+for lease in dhcptree.findall('./result/interface/entry'):
+  print("<tr>")
+  print("<td>%s</td>" % (lease.find('ip').text, ))
+  print("<td>%s</td>" % (lease.find('mac').text, ))
+  if lease.find('hostname') is not None:
+    print("<td>%s</td>" % (lease.find('hostname').text, ))
+  else:
+    print("<td></td>")
+  if lease.find('state') is not None:
+    print("<td>%s</td>" % (lease.find('state').text, ))
+  else:
+    print("<td></td>")
+  if lease.find('duration') is not None:
+    print("<td>%s</td>" % (lease.find('duration').text, ))
+  else:
+    print("<td></td>")
+  if lease.find('leasetime') is not None:
+    print("<td>%s</td>" % (lease.find('leasetime').text, ))
+  else:
+    print("<td></td>")
+  print("</tr>")
+print("</table>")
 
 print("</div>")
+
 
 print("""
   </body>
