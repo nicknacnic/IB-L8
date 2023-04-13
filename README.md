@@ -1,6 +1,6 @@
 # IB-L8 
 
-Pronounced "ablate," this project is an automation framework for Infoblox brand products built by Layer 8 (hence IB-L8). The goal of this tool is for distribution to customers to assist their engineers with the collection of data to appropriately size, architect, and deploy their new core DNS/DHCP infrastructure and DNS Security products. This tool is a facelift from P0lr's 'PAN-AF' tool utilized to create dynamic user groups on firewalls. 
+Pronounced "ablate," this project is an automation framework for Infoblox brand products built by Layer 8 (hence IB-L8). The goal of this tool is for distribution to customers to assist their engineers with the collection of data to appropriately size, architect, and deploy their new core DNS/DHCP infrastructure and DNS Security products. This tool is a facelift from P0lr's 'PAN-AF' tool utilized to create dynamic user groups on firewalls, now maintained by SKANNER-909. 
 
 ### Data Collector
 
