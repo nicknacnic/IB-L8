@@ -21,7 +21,7 @@ This tool will render your deployment from the above output for a variety of use
 
 (Work in Progress)
 
-### Install on Linux:
+### Install on Linux (tested on RasPi w/ Python2.7):
 ```
 wget -q https://raw.githubusercontent.com/nicknacnic/IB-L8/master/install.sh
 chmod +x install.sh
