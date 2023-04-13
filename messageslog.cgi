@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import cgi
+import subprocess
 import cgitb; cgitb.enable(format='text')  # for troubleshooting
 
 print("Content-type: text/html")
