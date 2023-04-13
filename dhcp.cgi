@@ -16,17 +16,11 @@ fwkey = fw_creds.fwkey
 print("Content-type: text/html")
 print()
 
-# Define the HTML for the "Export to PDF" button and form
 print("""
 <html>
 <head>
   <title>DHCP Leases</title>
   <link rel="stylesheet" href="/style.css" type="text/css">
-  <script>
-    function exportToPdf() {
-      document.getElementById("export-form").submit();
-    }
-  </script>
 </head>
 <body>
 
@@ -37,16 +31,6 @@ print("""
   <div class="text">
     DHCP Leases
   </div>
-</div>
-
-<!-- Define the form for exporting to PDF -->
-<form id="export-form" method="post" action="/export_pdf.py">
-  <input type="hidden" name="pdf_data" value="">
-</form>
-
-<!-- Define the Export to PDF button -->
-<div>
-  <button onclick="exportToPdf()">Export to PDF</button>
 </div>
 """)
 
