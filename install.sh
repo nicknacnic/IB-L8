@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Tell the installer the root of the files to download
-REPO="https://raw.githubusercontent.com/p0lr/PAN-AF/master/"
+REPO="https://raw.githubusercontent.com/nicknacnic/IB-L8/master/"
 
 #check to make sure Python is installed
 python --version
