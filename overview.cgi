@@ -33,16 +33,15 @@ print("""
   </div>
 </div>
 
-  <div class="form4">
-    <form method="post" action="/cgi-bin/overview.cgi">
-      <input type="submit" value="Export to PDF"/>
-    </form>
-  </div>
-  </body>
-    """)
-  
+<div class="form4">
+  <form method="post" action="/cgi-bin/keygen.cgi" target="_blank">
+    <input type="submit" value="Export to PDF"/>
+  </form>
+</div>
 
-#Print the menu
+""")
+
+# Print the menu
 menu = open("menu.html", "r")
 for line in menu:
   print(line)
