@@ -34,7 +34,7 @@ print("""
 </div>
 
   <div class="form4">
-    <form method="post" action="/cgi-bin/keygen.cgi">
+    <form method="post" action="/cgi-bin/overview.cgi">
       <input type="submit" value="Export to PDF"/>
     </form>
   </div>
