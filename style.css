@@ -104,28 +104,6 @@ li a:hover {
     cursor: pointer;
 }
 
-.form1 input[type=revert] {
-  font:normal 14px "Lato", lato, Lato, stark, sans-serif;
-  background-color: #FF585D;
-  border: none;
-  color: white;
-  width: 100%;
-  padding: 15px;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.form1 input[type=export] {
-  font:normal 14px "Lato", lato, Lato, stark, sans-serif;
-  background-color: #FEDD00;
-  border: none;
-  color: white;
-  width: 100%;
-  padding: 15px;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 .form2 {
   position: absolute;
   width: 80%;
@@ -186,6 +164,28 @@ li a:hover {
     padding: 15px;
     text-decoration: none;
     cursor: pointer;
+}
+
+.form3 input[type=submit] {
+  font:normal 14px "Lato", lato, Lato, stark, sans-serif;
+  background-color: #FF585D;
+  border: none;
+  color: white;
+  width: 100%;
+  padding: 15px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.form4 input[type=submit] {
+  font:normal 14px "Lato", lato, Lato, stark, sans-serif;
+  background-color: #FEDD00;
+  border: none;
+  color: white;
+  width: 100%;
+  padding: 15px;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .response {
