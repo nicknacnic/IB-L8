@@ -52,25 +52,35 @@ sudo service apache2 restart
 
 # Copy cgi scripts into the cgi directory
 cd /usr/lib/cgi-bin
-sudo wget -q ${REPO}index.cgi
-sudo wget -q ${REPO}keygen.cgi
-sudo wget -q ${REPO}vlan.cgi
-sudo wget -q ${REPO}usermap.cgi
-sudo wget -q ${REPO}groupmap.cgi
-sudo wget -q ${REPO}clearusers.cgi
+sudo wget -q ${REPO}accesslog.cgi
 sudo wget -q ${REPO}arp.cgi
+sudo wget -q ${REPO}b1manback.cgi
+sudo wget -q ${REPO}b1rpz.cgi
+sudo wget -q ${REPO}build.cgi
+sudo wget -q ${REPO}changes.cgi
+sudo wget -q ${REPO}clearusers.cgi
 sudo wget -q ${REPO}dhcp.cgi
 sudo wget -q ${REPO}dhcputil.cgi
-sudo wget -q ${REPO}policy.cgi
-sudo wget -q ${REPO}ibl8log.cgi
-sudo wget -q ${REPO}syslog.cgi
-sudo wget -q ${REPO}messageslog.cgi
-sudo wget -q ${REPO}accesslog.cgi
+sudo wget -q ${REPO}dns.cgi
 sudo wget -q ${REPO}errorlog.cgi
+sudo wget -q ${REPO}groupmap.cgi
+sudo wget -q ${REPO}ibl8log.cgi
+sudo wget -q ${REPO}index.cgi
+sudo wget -q ${REPO}ip.cgi
+sudo wget -q ${REPO}keygen.cgi
 sudo wget -q ${REPO}manback.cgi
-sudo wget -q ${REPO}software.cgi
-sudo wget -q ${REPO}changes.cgi
 sudo wget -q ${REPO}menu.html
+sudo wget -q ${REPO}messageslog.cgi
+sudo wget -q ${REPO}overview.cgi
+sudo wget -q ${REPO}policy.cgi
+sudo wget -q ${REPO}review.cgi
+sudo wget -q ${REPO}rpz.cgi
+sudo wget -q ${REPO}software.cgi
+sudo wget -q ${REPO}syslog.cgi
+sudo wget -q ${REPO}usermap.cgi
+sudo wget -q ${REPO}vlan.cgi
+
+
 sudo find /usr/lib/cgi-bin -exec chown www-data {} \;
 sudo find /usr/lib/cgi-bin -exec chgrp www-data {} \;
 sudo find /usr/lib/cgi-bin -type f -exec chmod 755 {} \;
